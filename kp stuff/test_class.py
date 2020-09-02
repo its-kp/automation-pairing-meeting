@@ -38,7 +38,7 @@ class LanguageContent:
     def select_single_language(self):
 
         for each_language in self.target_language_list:
-            self.click_target_dropdown()
+
             target_language = f"//div[@class='language-list-unfiltered-langs-tl_list']//div[text()='{each_language}']"
             self.browser.find_element_by_xpath(target_language).click()
             time.sleep(0.5)
@@ -51,6 +51,7 @@ class LanguageContent:
             text_language = self.browser.find_element_by_xpath(new_text).text
 
             self.translated_hello_world[each_language] = text_language
+            self.click_target_dropdown()
 
     def print_statement(self):
         print(self.translated_hello_world)
